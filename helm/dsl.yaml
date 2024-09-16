@@ -1,39 +1,38 @@
-commonProperties:  
-  env: 
-    accountId: 
+commonProperties:
+  env:
+    accountId:
       dev: 730335273876
-      hom: 1234567890 
-      prod: 1234567890 
-    tags: 
-      A: B 
-      B: D 
-    compute: 
-      - type: awsglue 
-        version: "4.0" 
-        language: "python" 
-        workerType: "G.1X" 
-        autoScaling: false
-        connectivity:  
-          - subnet1 
-          - subnet2 
-          - subnet3 
-        securityGroup: 
-          - sg-123456789
-          - sg-234567891 
-          - sg-345678912 
-      - type: awslambda 
-        identifier: "python3.10" 
-        architecture: "x86_64"
-        enableVPC: true
-        vpc_name: "vpc_account" 
-        subnets:  
-          - subnet1 
-          - subnet2 
-          - subnet3 
-        securityGroups: 
-          - sg-123456789 
-          - sg-234567891 
-          - sg-345678912 
+      hom: 1234567890
+      prod: 1234567890
+    tags:
+      A: B
+      B: D
+    awsglue:
+      version: "4.0"
+      language: "python"
+      workerType: "G.1X"
+      autoScaling: false
+      connectivity:
+        - subnet1
+        - subnet2
+        - subnet3
+      securityGroup:
+        - sg-123456789
+        - sg-234567891
+        - sg-345678912
+    awslambda:
+      identifier: "python3.10" 
+      architecture: "x86_64"
+      enableVPC: true
+      vpc_name: "vpc_account" 
+      subnets:  
+        - subnet1 
+        - subnet2 
+        - subnet3 
+      securityGroups: 
+        - sg-123456789 
+        - sg-234567891 
+        - sg-345678912 
 
 # melhorar experiencia no sentido operacional (ex falhou rotina, pode dar um restart, é idepotente, etc...) 
 # descritivo da rotina e qual o procedimento no caso de falha? 

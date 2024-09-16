@@ -1,5 +1,5 @@
 {{- range $env, $envValues := .Values.environments }}
-{{- range $job := $envValues.runtime }}
+{{- range $job := $envValues.runtimes }}
 apiVersion: glue.aws.crossplane.io/v1alpha1
 kind: Job
 metadata:
@@ -9,13 +9,13 @@ spec:
     name: {{ $job.jobName }}
     roleArn: {{ $job.security.executionRoleArn }}
     command:
-      scriptLocation: {{ $job.scriptLocation }}
+      scriptLocation: {{ $job.compute.scriptLocation }}
       name: glueetl
     defaultArguments:
       --job-bookmark-option: "job-bookmark-enable"
     maxCapacity: {{ $job.compute.maxNumberOfWorkers }}
-    glueVersion: {{ .Values.commonProperties.env.compute[0].version }}
-    workerType: {{ .Values.commonProperties.env.compute[0].workerType }}
+    glueVersion: {{ $.Values.commonProperties.env.awsglue.version }}
+    workerType: {{ $.Values.commonProperties.env.awsglue.workerType }}
   providerConfigRef:
     name: aws-provider
 ---
