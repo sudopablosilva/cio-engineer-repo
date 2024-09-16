@@ -1,0 +1,4 @@
+apiVersion: v2
+description: Chart for creating Glue Job via ArgoCD
+name: gluejob
+version: 0.0.1
